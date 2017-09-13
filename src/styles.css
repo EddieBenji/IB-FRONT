@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  background-color: white;
+  color: #369;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.headline {
+  color: white;
+}
