@@ -1,0 +1,16 @@
+form {
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+form .shift-label {
+  margin-right: 2%;
+}
+
+form button {
+  cursor: pointer;
+}
+
+.oi {
+  cursor: pointer;
+}

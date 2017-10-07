@@ -44,7 +44,7 @@ export class GeneralService {
   };
 
   constructor(protected http: HttpClient, protected notificationService: NotificationService) {
-    this.bethelUrl = isDevMode() ? 'http://127.0.0.1:8000' : 'http://74.208.72.187:4500/api';
+    this.bethelUrl = isDevMode() ? 'http://localhost:3000' : 'http://localhost:3000';
   }
 
   protected handleError = function (error: Response | any) {
@@ -55,7 +55,7 @@ export class GeneralService {
   };
 
   protected extractData = function (response: Response) {
-    return response.json() || {};
+    return response || {};
   };
 
   private appendTokenToUrl(endpointUrl: string, token: string) {
@@ -89,7 +89,6 @@ export class GeneralService {
           queryParams = queryParams.set(objKey, objectToSend[ objKey ]);
         }
       }
-      console.log('query params: ', queryParams);
       return this.http.get(this.bethelUrl + endpointUrl, { params: queryParams })
         .map((response: Response) => this.extractData(response))
         .catch((error: any) => this.handleError(error));
