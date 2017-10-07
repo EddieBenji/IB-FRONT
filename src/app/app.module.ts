@@ -17,6 +17,7 @@ import { NotificationComponent } from './utils/notification/notification.compone
 import { NotificationService } from './utils/notification/notification.service';
 import { SimpleDropDownEmitter } from './utils/confirmation-modal/simple-drop-down/simple-drop-down.emitter';
 import { SimpleDropDownComponent } from './utils/confirmation-modal/simple-drop-down/simple-drop-down.component';
+import { GeneralService } from './utils/general.service';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { SimpleDropDownComponent } from './utils/confirmation-modal/simple-drop-
     HttpModule
   ],
   providers: [
+    GeneralService,
     BethelEmitter,
     PaginationService,
     NotificationService,
