@@ -1,0 +1,38 @@
+.row {
+    padding-bottom: 1%;
+}
+
+label {
+    height: 17px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    color: #4a4a4a;
+    padding-top: 5%;
+    /*we need to overwrite the font-weight:*/
+    font-weight: normal;
+}
+
+select {
+    max-width: 300px;
+    height: 30px;
+    margin: 0;
+    padding: 0 30px 0 10px;
+    font-size: 12px;
+    font-weight: 400;
+    font-family: 'Open Sans', sans-serif;
+    border-radius: 2px;
+    text-align: left;
+    outline: 1px solid white;
+    background-color: #ffffff;
+    border: 1px solid #D7D7D7;
+    background: linear-gradient(transparent, transparent) no-repeat, linear-gradient(-135deg, rgba(255, 255, 255, 0) 50%, white 50%) no-repeat, linear-gradient(-225deg, rgba(255, 255, 255, 0) 50%, white 50%) no-repeat, linear-gradient(#A4A4A4, #A4A4A4) no-repeat;
+    background-size: 1px 100%, 35px 25px, 25px 25px, 30px 55%;
+    background-position: right 30px center, right bottom, right bottom, right bottom;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+select::-ms-expand {
+    display: none;
+}

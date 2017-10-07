@@ -1,0 +1,154 @@
+.up {
+  max-width: 20%;
+  max-height: 17%;
+  top: 10px;
+  left: 40%;
+  display: block;
+  z-index: 1000000;
+}
+
+.ll-msg-div {
+  width: 20%;
+  position: absolute;
+}
+
+.ll-close-area {
+  cursor: pointer;
+}
+
+.ll-msg-div .ll-msg-info {
+  border-radius: 5px;
+  box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.5);
+  margin-bottom: 10px;
+  background: #ffffff;
+}
+
+.ll-msg-div .ll-msg-info .ll-notification-text-area {
+  background: #ffffff;
+  padding: 10px;
+  width: 90%;
+  font-weight: 600;
+  color: #4c4c4c;
+}
+
+.ll-msg-div .ll-msg-info .ll-notification-area {
+  display: flex;
+}
+
+.ll-msg-div .ll-msg-info .ll-icon-area {
+  width: 60px;
+  background: #3abfec;
+  text-align: center;
+  border-radius: 4px 0px 0px 4px;
+}
+
+.ll-msg-div .ll-msg-info .ll-icon-area img {
+  vertical-align: middle;
+  height: 100%;
+  opacity: 0.3;
+}
+
+.ll-msg-div .ll-msg-info .ll-close-area {
+  width: 45px;
+  background: #ffffff;
+  padding-left: 10px;
+  border-radius: 0px 4px 4px 0px;
+}
+
+.ll-msg-div .ll-msg-info .ll-close-area img {
+  vertical-align: middle;
+  height: 100%;
+}
+
+.ll-msg-div .ll-msg-error {
+  background: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.5);
+  margin-bottom: 10px;
+}
+
+.ll-msg-div .ll-msg-error .ll-notification-text-area {
+  background: #ffffff;
+  padding: 10px;
+  width: 90%;
+  font-weight: 600;
+  color: #4c4c4c;
+}
+
+.ll-msg-div .ll-msg-error .ll-notification-area {
+  display: flex;
+}
+
+.ll-msg-div .ll-msg-error .ll-icon-area {
+  width: 60px;
+  background: #e74c3c;
+  text-align: center;
+  border-radius: 4px 0px 0px 4px;
+}
+
+.ll-msg-div .ll-msg-error .ll-icon-area img {
+  vertical-align: middle;
+  height: 100%;
+  opacity: 0.3;
+}
+
+.ll-msg-div .ll-msg-error .ll-close-area {
+  width: 45px;
+  background: #ffffff;
+  padding-left: 10px;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+
+.ll-msg-div .ll-msg-error .ll-close-area img {
+  vertical-align: middle;
+  height: 100%;
+}
+
+.ll-msg-div .ll-msg-success {
+  background: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.5);
+  margin-bottom: 10px;
+}
+
+.ll-msg-div .ll-msg-success .ll-notification-text-area {
+  background: #ffffff;
+  padding: 10px;
+  width: 90%;
+  font-weight: 600;
+  color: #4c4c4c;
+}
+
+.ll-msg-div .ll-msg-success .ll-notification-area {
+  display: flex;
+}
+
+.ll-msg-div .ll-msg-success .ll-icon-area {
+  width: 60px;
+  background: #1abc9c;
+  text-align: center;
+  border-radius: 4px 0px 0px 4px;
+}
+
+.ll-msg-div .ll-msg-success .ll-icon-area img {
+  vertical-align: middle;
+  height: 100%;
+  opacity: 0.3;
+}
+
+.ll-msg-div .ll-msg-success .ll-close-area {
+  width: 45px;
+  background: #ffffff;
+  padding-left: 10px;
+  border-radius: 0px 4px 4px 0px;
+}
+
+.ll-msg-div .ll-msg-success .ll-close-area img {
+  vertical-align: middle;
+  height: 100%;
+}
+
+.click-here {
+  cursor: pointer;
+}

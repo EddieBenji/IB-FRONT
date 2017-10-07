@@ -1,0 +1,31 @@
+<div class="backdrop" [ngStyle]="{display: display}"></div>
+
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{display: display}" *ngIf="isConfirmationModalOpen()"
+     [@openModal]="isConfirmationModalOpen()">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+                <span class="ll-icon ll-iconfont-close ll-icon_cross pull-right"
+                      (click)="answerTheQuestion(infoToDisplay.getFalsyAnswer())"></span>
+
+        <h4 class="modal-title">{{ infoToDisplay.header }}</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <label class="col-md-12 col-lg-12 text-left">
+            {{infoToDisplay.question | titleCase}}
+          </label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn ll-btn ll-btn-secondary-blue"
+                (click)="answerTheQuestion(infoToDisplay.getFalsyAnswer())">
+          {{infoToDisplay.getFalsyAnswer()}}
+        </button>
+        <button type="button" class="btn ll-btn" (click)="answerTheQuestion(infoToDisplay.getPositiveAnswer())">
+          {{infoToDisplay.getPositiveAnswer()}}
+        </button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

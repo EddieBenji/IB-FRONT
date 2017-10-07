@@ -1,0 +1,38 @@
+<div class="pagination-wrapper">
+  <div class="pagination" *ngIf="pagingObject && pagingObject.numberOfRows > 0">
+
+    <a (click)="selectFirstPage()"
+       [ngClass]="{disabled: pagingObject.selectedPage == 1}"
+       *ngIf="existsMoreThanOnePage()">
+      <i class="material-icons">first_page</i>
+    </a>
+
+    <a (click)="selectPage(pagingObject.selectedPage - 1)"
+       [ngClass]="{disabled: pagingObject.selectedPage == 1}"
+       *ngIf="showNextOrPreviousIcon()">
+      <i class="material-icons">chevron_left</i>
+    </a>
+
+    <a
+      *ngFor="let pageNumber of getFivePagesOrLess() | loopForNumber:pagingObject.selectedPage:pagingObject.total_pages "
+      [ngClass]="{ active: pageNumber == pagingObject.selectedPage}"
+      (click)="selectPage(pageNumber)">
+      {{pageNumber}}
+    </a>
+
+    <a (click)="selectPage(pagingObject.selectedPage + 1)"
+       [ngClass]="{disabled: pagingObject.total_pages == pagingObject.selectedPage}"
+       *ngIf="showNextOrPreviousIcon()">
+      <i class="material-icons">chevron_right</i>
+    </a>
+
+
+    <a (click)="selectLastPage()"
+       [ngClass]="{disabled: pagingObject.total_pages == pagingObject.selectedPage}"
+       *ngIf="existsMoreThanOnePage()">
+      <i class="material-icons">last_page</i>
+    </a>
+
+  </div>
+
+</div>

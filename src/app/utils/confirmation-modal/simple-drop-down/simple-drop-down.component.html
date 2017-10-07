@@ -1,0 +1,16 @@
+<div *ngIf="isDropDownVisible()" class="row">
+    <div class="{{getColumnSizeForLabel()}}" *ngIf="select.labelText != ''">
+        <label class="pull-right">
+            {{select.labelText}}
+        </label>
+    </div>
+    <div class="{{getColumnSizeForSelect()}}">
+        <select class="form-control ll-form-control pull-left"
+                (change)="selectOption($event.target.value)">
+            <option *ngFor="let option of select.selectOptions" value="{{option.id}}"
+                    selected="{{option.isSelected ?  'selected' : ''}}">
+                {{option.text}}
+            </option>
+        </select>
+    </div>
+</div>
