@@ -1,0 +1,36 @@
+.show-inline {
+  display: inline-block;
+}
+
+.app-body {
+  margin-top: 80px;
+}
+
+.nav-styles {
+  background-color: #39D1F3;
+}
+
+.nav-item {
+  padding: 0 25px;
+}
+
+.nav-styles a {
+  color: #E8F70C;
+}
+
+.nav-styles a:hover {
+  color: #67c9a4
+}
+
+.nav-styles a.active {
+  color: white;
+  font-weight: bold;
+}
+
+.dropdown-links a {
+  color: #1a1b22;
+}
+
+.dropdown-links a:hover {
+  color: #252830
+}

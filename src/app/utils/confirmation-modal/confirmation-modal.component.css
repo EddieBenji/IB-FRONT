@@ -1,0 +1,100 @@
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 720px;
+  }
+}
+
+.modal-header {
+  border-bottom: 1px solid #ededed
+}
+
+.modal-header .modal-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #4a4a4a;
+}
+
+.modal-body .textBold {
+  font-weight: 600;
+}
+
+.modal-body .outList {
+  line-height: 20px;
+}
+
+.modal-body .outList li span.properties {
+  display: block;
+  padding-bottom: 10px;
+}
+
+.modal-body .outList > li {
+  margin-bottom: 15px;
+}
+
+.modal-body .list-group .list-group-item {
+  border: 1px solid #ededed;
+}
+
+.modal-body .list-group .list-group-item span {
+  margin-left: 10px;
+  color: #a4a4a4;
+}
+
+.modal-content .modal-footer {
+  text-align: right;
+}
+
+.ll-btn {
+  padding: 0 10px;
+  background-color: #0099ff;
+  color: #ffffff;
+  font-size: 12px;
+  border-radius: 2px;
+  border: 0;
+  font-weight: 600;
+  min-width: 80px;
+  height: 30px;
+  line-height: 30px;
+}
+
+.ll-btn:hover {
+  background-color: #0099ff;
+  color: #ffffff;
+}
+
+.ll-btn:active {
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.125) inset;
+}
+
+.ll-btn[disabled] {
+  cursor: not-allowed;
+  pointer-events: auto !important;
+  background-color: #a4a4a4;
+}
+
+.ll-btn[disabled]:hover {
+  background-color: #4c4c4c;
+}
+
+.ll-btn-secondary-blue {
+  border: 1px solid #0099ff;
+  color: #0099ff;
+  background: #ffffff;
+}
+
+.ll-btn-secondary-blue:hover {
+  border-color: #0099ff;
+  color: #0099ff;
+  background: #ffffff;
+}
+
+.ll-btn-secondary-blue[disabled],
+.ll-btn-secondary-blue:hover[disabled] {
+  border: 1px solid #d7d7d7;
+  color: #4c4c4c;
+  background: #ffffff;
+}
+
+.ll-icon_cross {
+  color: #acacac
+}

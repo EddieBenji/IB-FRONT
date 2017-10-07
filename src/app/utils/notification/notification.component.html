@@ -1,0 +1,19 @@
+<div *ngIf="notifications.length > 0" class="ll-msg-div up" [@closeNotifications]="notifications.length > 0">
+    <div class="{{checkClass(notification)}}" *ngFor="let notification of notifications"
+         [@openNotification]="notification != null">
+        <div class="ll-notification-info">
+            <div class="ll-notification-area click-here" (click)="closeNotification(notification)">
+                <div class="ll-icon-area">
+                    <img src="assets/images/{{checkImg(notification)}}" width="20" height="20">
+                </div>
+                <div class="ll-notification-text-area">
+                    {{notification.title}}
+                    <em>{{notification.message}}</em>
+                </div>
+                <div class="ll-close-area" (click)="closeNotification(notification)">
+                    <img src="assets/images/cross2.svg" width="10" height="10">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
