@@ -28,7 +28,7 @@ import { GeneralService } from './utils/general.service';
     LoopForNumberPipe,
     PaginationFooterComponent,
     NotificationComponent,
-    SimpleDropDownComponent
+    SimpleDropDownComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +42,7 @@ import { GeneralService } from './utils/general.service';
     BethelEmitter,
     PaginationService,
     NotificationService,
-    SimpleDropDownEmitter
+    SimpleDropDownEmitter,
   ],
   bootstrap: [ AppComponent ]
 })

@@ -89,6 +89,7 @@ export class GeneralService {
           queryParams = queryParams.set(objKey, objectToSend[ objKey ]);
         }
       }
+      console.log('query params: ', queryParams);
       return this.http.get(this.bethelUrl + endpointUrl, { params: queryParams })
         .map((response: Response) => this.extractData(response))
         .catch((error: any) => this.handleError(error));

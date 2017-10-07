@@ -8,3 +8,7 @@ body {
 .headline {
   color: white;
 }
+
+.capitalize-case {
+  text-transform: capitalize;
+}
