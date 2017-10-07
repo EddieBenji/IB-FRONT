@@ -3,8 +3,9 @@
  * All Rights Reserved.
  */
 export class SearchStudent {
-  constructor(public name = '', public  lastName = '',
-              public mode = 'Todos', public offset = 1) {
+  constructor(public first_name = '', public  last_name = '',
+              public email = '', public shift = '',
+              public gender = '', public offset = 1) {
 
   }
 }
