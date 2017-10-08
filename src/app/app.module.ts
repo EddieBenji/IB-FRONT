@@ -15,10 +15,12 @@ import { PaginationFooterComponent } from './utils/pagination-footer/pagination-
 import { PaginationService } from './utils/pagination-footer/pagination.service';
 import { NotificationComponent } from './utils/notification/notification.component';
 import { NotificationService } from './utils/notification/notification.service';
-import { SimpleDropDownEmitter } from './utils/confirmation-modal/simple-drop-down/simple-drop-down.emitter';
-import { SimpleDropDownComponent } from './utils/confirmation-modal/simple-drop-down/simple-drop-down.component';
+import { SimpleDropDownEmitter } from './utils/simple-drop-down/simple-drop-down.emitter';
+import { SimpleDropDownComponent } from './utils/simple-drop-down/simple-drop-down.component';
 import { GeneralService } from './utils/general.service';
 import { StudentService } from './student/student.service';
+import { StudentModalComponent } from './student/student-modal/student-modal.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -30,9 +32,11 @@ import { StudentService } from './student/student.service';
     PaginationFooterComponent,
     NotificationComponent,
     SimpleDropDownComponent,
+    StudentModalComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     BethelInstituteRouting,
     FormsModule,
     NgbModule.forRoot(),
@@ -42,9 +46,9 @@ import { StudentService } from './student/student.service';
     GeneralService,
     BethelEmitter,
     PaginationService,
-    NotificationService,
     SimpleDropDownEmitter,
-    StudentService
+    StudentService,
+    NotificationService,
   ],
   bootstrap: [ AppComponent ]
 })
