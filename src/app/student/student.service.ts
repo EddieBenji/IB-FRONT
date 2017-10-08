@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { NotificationService } from '../utils/notification/notification.service';
 import { RequestType } from '../utils/request-type.enum';
 import { SearchStudent } from './search-student.model';
+import { StudentResponse } from './student-response.model';
 
 @Injectable()
 export class StudentService extends GeneralService {
@@ -14,5 +15,12 @@ export class StudentService extends GeneralService {
 
   searchForStudents(search: SearchStudent) {
     return this.hitBethelApi(RequestType.GET, search, '/students');
+  }
+
+  addOrUpdateStudent(student: StudentResponse) {
+    if (student.id) {
+      return this.hitBethelApi(RequestType.PUT, { student: student }, '/students/' + student.id);
+    }
+    return this.hitBethelApi(RequestType.POST, { student: student }, '/students');
   }
 }

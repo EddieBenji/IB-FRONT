@@ -1,0 +1,85 @@
+<div class="backdrop" [ngStyle]="{display: display}"></div>
+
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{display: display}" *ngIf="isModalOpen()" aria-hidden="true"
+     [@openModal]="isModalOpen()">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <h5 class="modal-title" *ngIf="isStudentNew(); else titleForEditingOrWatching">Agregar estudiante</h5>
+        <ng-template #titleForEditingOrWatching>
+          <h5 class="modal-title" *ngIf="!isEditing; else titleForEditing">Estudiante</h5>
+          <ng-template #titleForEditing><h5 class="modal-title">Actualizar estudiante</h5></ng-template>
+
+        </ng-template>
+        <!--close button:-->
+        <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form>
+
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="first-name">Nombre(s)</label>
+            <input type="text" class="form-control" id="first-name"
+                   placeholder="Nombre(s)" name="first-name" [(ngModel)]="student.first_name"
+                   [disabled]="!isEditing && !isStudentNew()">
+          </div>
+
+          <div class="form-group">
+            <label for="last-name">Apellido(s)</label>
+            <input type="text" class="form-control" id="last-name"
+                   placeholder="Apellido(s)" name="last-name" [(ngModel)]="student.last_name"
+                   [disabled]="!isEditing && !isStudentNew()">
+          </div>
+
+          <div class="form-group">
+            <label for="last-name">Correo</label>
+            <input type="email" class="form-control" id="email"
+                   placeholder="Correo" name="email" [(ngModel)]="student.email"
+                   [disabled]="!isEditing && !isStudentNew()">
+          </div>
+
+          <div class="form-group">
+            <label for="age">Edad</label>
+            <input type="number" class="form-control" id="age"
+                   placeholder="Edad" name="age" [(ngModel)]="student.age"
+                   [disabled]="!isEditing && !isStudentNew()">
+          </div>
+
+          <div class="form-group">
+            <label for="gender" class="col-form-label shift-label">Género</label>
+            <select id="gender" class="form-control" [(ngModel)]="student.gender" name="gender"
+                    [disabled]="!isEditing && !isStudentNew()">
+              <option value="M">Masculino</option>
+              <option value="F">Femenino</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="shift" class="col-form-label shift-label">Turno</label>
+            <select id="shift" class="form-control" name="shift" [(ngModel)]="student.shift"
+                    [disabled]="!isEditing && !isStudentNew()">
+              <option value="Alternativo">Alternativo</option>
+              <option value="Escolarizado">Escolarizado</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary click-here"
+                  (click)="closeModal()">
+            Cerrar
+          </button>
+          <button *ngIf="isEditing || isStudentNew()"
+                  type="button" class="btn btn-primary click-here" (click)="updateStudent()">
+            Actualizar
+          </button>
+        </div>
+
+      </form>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

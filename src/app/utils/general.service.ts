@@ -74,7 +74,7 @@ export class GeneralService {
 
     if (requestType === RequestType.POST) {
       return this.http.post(
-        endpointUrl, JSON.stringify(objectToSend),
+        this.bethelUrl + endpointUrl, JSON.stringify(objectToSend),
         { headers: new HttpHeaders().set('Content-Type', 'application/json') }
       )
         .map((response: Response) => this.extractData(response))
@@ -96,14 +96,14 @@ export class GeneralService {
 
     if (requestType === RequestType.PUT) {
       return this.http.put(
-        endpointUrl, JSON.stringify(objectToSend),
+        this.bethelUrl + endpointUrl, JSON.stringify(objectToSend),
         { headers: new HttpHeaders().set('Content-Type', 'application/json') })
         .map((response: Response) => this.extractData(response))
         .catch((error: any) => this.handleError(error));
     }
 
     // Then delete method:
-    return this.http.delete(endpointUrl,
+    return this.http.delete(this.bethelUrl + endpointUrl,
       { headers: new HttpHeaders().set('Content-Type', 'application/json') })
       .map((response: Response) => this.extractData(response))
       .catch((error: any) => this.handleError(error));

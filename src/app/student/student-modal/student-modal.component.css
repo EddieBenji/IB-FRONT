@@ -1,0 +1,45 @@
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 720px;
+  }
+}
+
+.modal-header {
+  border-bottom: 1px solid #ededed
+}
+
+.modal-header .modal-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #4a4a4a;
+}
+
+.modal-body .textBold {
+  font-weight: 600;
+}
+
+.modal-body .outList {
+  line-height: 20px;
+}
+
+.modal-body .outList li span.properties {
+  display: block;
+  padding-bottom: 10px;
+}
+
+.modal-body .outList > li {
+  margin-bottom: 15px;
+}
+
+.modal-body .list-group .list-group-item {
+  border: 1px solid #ededed;
+}
+
+.modal-body .list-group .list-group-item span {
+  margin-left: 10px;
+  color: #a4a4a4;
+}
+
+.modal-content .modal-footer {
+  text-align: right;
+}
