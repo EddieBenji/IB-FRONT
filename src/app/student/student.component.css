@@ -14,3 +14,15 @@ form button {
 .oi {
   cursor: pointer;
 }
+
+.oi-eye, .oi-pencil {
+  color: black;
+}
+
+.oi-eye:hover, .oi-pencil:hover {
+  color: #005CA0;
+}
+
+.oi-trash {
+  color: red;
+}

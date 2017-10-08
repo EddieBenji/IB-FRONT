@@ -81,8 +81,9 @@
     <td>{{student.shift}}</td>
     <td>{{student.gender}}</td>
     <td>
-      <span class="oi oi-eye" (click)="selectStudent(student, false)"></span>
-      <span class="oi oi-pencil" (click)="selectStudent(student, true)"></span>
+      <span class="oi oi-eye" (click)="selectStudent(student, false)" title="Ver"></span>
+      <span class="oi oi-pencil" (click)="selectStudent(student, true)" title="Editar"></span>
+      <span class="oi oi-trash" (click)="deleteStudent(student)" title="Eliminar"></span>
     </td>
   </tr>
   </tbody>

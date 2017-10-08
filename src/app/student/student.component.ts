@@ -56,4 +56,10 @@ export class StudentComponent implements OnInit {
     this.fetchStudents();
   }
 
+  deleteStudent(student: StudentResponse) {
+    this.studentService.deleteStudent(student).subscribe(
+      (response) => this.fetchStudents()
+    );
+  }
+
 }

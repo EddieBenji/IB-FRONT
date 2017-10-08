@@ -23,4 +23,8 @@ export class StudentService extends GeneralService {
     }
     return this.hitBethelApi(RequestType.POST, { student: student }, '/students');
   }
+
+  deleteStudent(student: StudentResponse) {
+    return this.hitBethelApi(RequestType.DELETE, {}, '/students/' + student.id);
+  }
 }
