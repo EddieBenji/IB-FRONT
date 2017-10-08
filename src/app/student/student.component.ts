@@ -3,6 +3,8 @@ import { SearchStudent } from './search-student.model';
 import { StudentService } from './student.service';
 import { StudentResponse } from './student-response.model';
 import { NotificationService } from '../utils/notification/notification.service';
+import { BethelEmitter } from '../utils/bethel.emitter';
+import { ResponseConfirmationModalModel } from '../utils/confirmation-modal/response-confirmation-modal.model';
 
 @Component({
   selector: 'app-student',
@@ -19,11 +21,26 @@ export class StudentComponent implements OnInit {
   displayModal = 'none';
   isEditing = false;
 
-  constructor(private studentService: StudentService, private notifService: NotificationService) {
+  SECTION_ID = 'students';
+
+  constructor(private studentService: StudentService,
+              private notifService: NotificationService,
+              private bethelEmitter: BethelEmitter) {
   }
 
   ngOnInit() {
     this.searcher = new SearchStudent;
+    this.fetchStudents();
+    this.bethelEmitter.closeConfirmationModal.subscribe(
+      (answer: ResponseConfirmationModalModel) => {
+        if (answer.opId !== this.SECTION_ID || !answer.response) {
+          return;
+        }
+        this.studentService.deleteStudent(this.studentSelected).subscribe(
+          (response) => this.fetchStudents()
+        );
+      }
+    );
   }
 
   private fetchStudents() {
@@ -57,9 +74,10 @@ export class StudentComponent implements OnInit {
   }
 
   deleteStudent(student: StudentResponse) {
-    this.studentService.deleteStudent(student).subscribe(
-      (response) => this.fetchStudents()
-    );
+    this.bethelEmitter.handleConfirmationModal('Eliminar estudiante',
+      '¿Seguro que deseas eliminar el estudiante seleccionado?',
+      this.SECTION_ID);
+    this.studentSelected = student;
   }
 
 }

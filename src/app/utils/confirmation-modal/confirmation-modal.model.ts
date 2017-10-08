@@ -13,7 +13,7 @@ export class ConfirmationModalModel {
      */
     constructor(private _header: string, private _question: string, private _opId?: any, private _answers?: string[]) {
         if (!this._answers) {
-            this._answers = ['Yes', 'No'];
+            this._answers = ['Sí', 'No'];
         }
     }
 

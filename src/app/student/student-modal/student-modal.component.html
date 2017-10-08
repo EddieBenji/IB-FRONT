@@ -73,10 +73,16 @@
                   (click)="closeModal()">
             Cerrar
           </button>
-          <button *ngIf="isEditing || isStudentNew()"
+          <button *ngIf="isStudentNew(); else updateBtn"
                   type="button" class="btn btn-primary click-here" (click)="updateStudent()">
-            Actualizar
+            Agregar
           </button>
+          <ng-template #updateBtn>
+            <button *ngIf="isEditing"
+                    type="button" class="btn btn-primary click-here" (click)="updateStudent()">
+              Actualizar
+            </button>
+          </ng-template>
         </div>
 
       </form>

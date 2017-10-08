@@ -5,14 +5,18 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-                <span class="ll-icon ll-iconfont-close ll-icon_cross pull-right"
-                      (click)="answerTheQuestion(infoToDisplay.getFalsyAnswer())"></span>
 
         <h4 class="modal-title">{{ infoToDisplay.header }}</h4>
+
+        <!--close button:-->
+        <button type="button" class="close" aria-label="Close"
+                (click)="answerTheQuestion(infoToDisplay.getFalsyAnswer())()">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
       <div class="modal-body">
         <div class="row">
-          <label class="col-md-12 col-lg-12 text-left capitalize-case">
+          <label class="col-md-12 col-lg-12 text-left">
             {{infoToDisplay.question}}
           </label>
         </div>

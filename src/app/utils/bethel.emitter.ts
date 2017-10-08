@@ -13,10 +13,12 @@ export class BethelEmitter {
 
   /**
    * This function is used when you want to open the confirmation modal.
-   * @param confirmationInfo
+   * @param header
+   * @param question
+   * @param opId
    */
-  handleConfirmationModal(confirmationInfo: ConfirmationModalModel) {
-    this.showConfirmationModal.emit(confirmationInfo);
+  handleConfirmationModal(header: string, question: string, opId: any) {
+    this.showConfirmationModal.emit(new ConfirmationModalModel(header, question, opId));
   }
 
   /**
