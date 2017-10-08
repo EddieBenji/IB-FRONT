@@ -44,7 +44,7 @@ export class StudentComponent implements OnInit {
   }
 
   selectStudent(student: StudentResponse, willEdit: boolean) {
-    this.studentSelected = student;
+    this.studentSelected = student ? student : new StudentResponse;
     this.isEditing = willEdit;
     this.displayModal = 'block';
   }
@@ -53,7 +53,6 @@ export class StudentComponent implements OnInit {
     this.studentSelected = null;
     this.isEditing = false;
     this.displayModal = 'none';
-    this.searcher = new SearchStudent;
     this.fetchStudents();
   }
 
