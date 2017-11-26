@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { SearchStudent } from '../search-student.model';
+import { SearchStudent } from './search-student.model';
 
 @Component({
   selector: 'app-student-searcher',

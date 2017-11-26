@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { slideModal } from '../../utils/bethel.animations';
-import { StudentResponse } from '../student-response.model';
+import { StudentResponse } from '../student-table/student-response.model';
 import { StudentService } from '../student.service';
 
 @Component({

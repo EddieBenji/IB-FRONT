@@ -3,8 +3,8 @@ import { GeneralService } from '../utils/general.service';
 import { HttpClient } from '@angular/common/http';
 import { NotificationService } from '../utils/notification/notification.service';
 import { RequestType } from '../utils/request-type.enum';
-import { SearchStudent } from './search-student.model';
-import { StudentResponse } from './student-response.model';
+import { SearchStudent } from './student-searcher/search-student.model';
+import { StudentResponse } from './student-table/student-response.model';
 
 @Injectable()
 export class StudentService extends GeneralService {

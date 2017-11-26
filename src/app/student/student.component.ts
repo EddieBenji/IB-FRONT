@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SearchStudent } from './search-student.model';
+import { SearchStudent } from './student-searcher/search-student.model';
 import { StudentService } from './student.service';
-import { StudentResponse } from './student-response.model';
+import { StudentResponse } from './student-table/student-response.model';
 import { BethelEmitter } from '../utils/bethel.emitter';
 import { ResponseConfirmationModalModel } from '../utils/confirmation-modal/response-confirmation-modal.model';
 

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { StudentResponse } from '../student-response.model';
+import { StudentResponse } from './student-response.model';
 
 @Component({
   selector: 'app-student-table',
