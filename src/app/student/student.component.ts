@@ -60,9 +60,9 @@ export class StudentComponent implements OnInit {
     this.fetchStudents();
   }
 
-  selectStudent(student: StudentResponse, willEdit: boolean) {
+  selectStudent(student: StudentResponse, permitToEdit: boolean) {
     this.studentSelected = student ? student : new StudentResponse;
-    this.isEditing = willEdit;
+    this.isEditing = permitToEdit;
     this.displayModal = 'block';
   }
 

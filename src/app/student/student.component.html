@@ -1,60 +1,7 @@
-<div class="card">
-  <div class="card-header">
-    Buscador de estudiantes.
-  </div>
-  <div class="card-body">
-    <form class="form-inline" (submit)="searchForStudents()">
-      <div class="col-sm-2 col-md-2 col-lg-2">
-        <div class="form-group">
-          <input type="text" class="form-control" [(ngModel)]="searcher.first_name"
-                 placeholder="Nombre(s)" name="first_name" maxlength="255">
-        </div>
-      </div>
-      <div class="col-sm-2 col-md-2 col-lg-2">
-        <div class="form-group">
-          <input type="text" class="form-control" [(ngModel)]="searcher.last_name"
-                 placeholder="Apellido(s)" name="last_name" maxlength="255">
-        </div>
-      </div>
-      <div class="col-sm-2 col-md-2 col-lg-2">
-        <div class="form-group">
-          <input type="email" class="form-control" [(ngModel)]="searcher.email" placeholder="Correo"
-                 maxlength="255" name="email">
-        </div>
-      </div>
-      <div class="col-sm-2 col-md-2 col-lg-2">
-        <div class="form-group">
-          <label for="shift" class="col-form-label shift-label">Turno</label>
-          <select id="shift" class="form-control" name="shift" [(ngModel)]="searcher.shift">
-            <option value="">Todos</option>
-            <option value="alternativo">Alternativo</option>
-            <option value="escolarizado">Escolarizado</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="col-sm-2 col-md-2 col-lg-2">
-        <div class="form-group">
-          <label for="gender" class="col-form-label shift-label">Género</label>
-          <select id="gender" class="form-control" [(ngModel)]="searcher.gender" name="gender">
-            <option value="">Todos</option>
-            <option value="M">Masculino</option>
-            <option value="F">Femenino</option>
-          </select>
-        </div>
-      </div>
-
-      <button type="submit" class="btn btn-primary"><span class="oi oi-magnifying-glass"></span> Buscar</button>
-
-    </form>
-
-    <button type="button" (click)="selectStudent(null, true)"
-            class="click-here btn btn-primary offset-sm-10 offset-md-10 offset-lg-10 col-sm-1 col-md-1 col-lg-1">
-      <span class="oi oi-plus"></span> Agregar
-    </button>
-  </div>
-  <br>
-</div>
+<app-student-searcher [searcher]="searcher"
+                      (searchStudents)="searchForStudents()"
+                      (onAddStudent)="selectStudent(null, true)">
+</app-student-searcher>
 <br>
 
 <table *ngIf="!isLoading && students && students.length>0"

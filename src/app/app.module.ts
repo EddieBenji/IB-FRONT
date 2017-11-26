@@ -21,6 +21,7 @@ import { GeneralService } from './utils/general.service';
 import { StudentService } from './student/student.service';
 import { StudentModalComponent } from './student/student-modal/student-modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StudentSearcherComponent } from './student/student-searcher/student-searcher.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NotificationComponent,
     SimpleDropDownComponent,
     StudentModalComponent,
+    StudentSearcherComponent,
   ],
   imports: [
     BrowserModule,
