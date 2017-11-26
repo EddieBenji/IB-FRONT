@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { SearchStudent } from './search-student.model';
 import { StudentService } from './student.service';
 import { StudentResponse } from './student-response.model';
-import { NotificationService } from '../utils/notification/notification.service';
 import { BethelEmitter } from '../utils/bethel.emitter';
 import { ResponseConfirmationModalModel } from '../utils/confirmation-modal/response-confirmation-modal.model';
 
@@ -24,7 +23,6 @@ export class StudentComponent implements OnInit {
   SECTION_ID = 'students';
 
   constructor(private studentService: StudentService,
-              private notifService: NotificationService,
               private bethelEmitter: BethelEmitter) {
   }
 
@@ -60,9 +58,9 @@ export class StudentComponent implements OnInit {
     this.fetchStudents();
   }
 
-  selectStudent(student: StudentResponse, permitToEdit: boolean) {
-    this.studentSelected = student ? student : new StudentResponse;
-    this.isEditing = permitToEdit;
+  selectStudent(infoStudent: { student: StudentResponse, permitToEdit: boolean }) {
+    this.studentSelected = infoStudent.student ? infoStudent.student : new StudentResponse;
+    this.isEditing = infoStudent.permitToEdit;
     this.displayModal = 'block';
   }
 
@@ -74,9 +72,9 @@ export class StudentComponent implements OnInit {
   }
 
   deleteStudent(student: StudentResponse) {
-    this.bethelEmitter.handleConfirmationModal('Eliminar estudiante',
-      '¿Seguro que deseas eliminar el estudiante seleccionado?',
-      this.SECTION_ID);
+    this.bethelEmitter.handleConfirmationModal(
+      'Eliminar estudiante', '¿Seguro que deseas eliminar el estudiante seleccionado?', this.SECTION_ID
+    );
     this.studentSelected = student;
   }
 

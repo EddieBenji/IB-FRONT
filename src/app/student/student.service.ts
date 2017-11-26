@@ -19,12 +19,15 @@ export class StudentService extends GeneralService {
 
   addOrUpdateStudent(student: StudentResponse) {
     if (student.id) {
-      return this.hitBethelApi(RequestType.PUT, { student: student }, '/students/' + student.id);
+      return this.hitBethelApi(RequestType.PUT, { student: student }, '/students/' + student.id)
+        .map(() => this.notificationService.handleSuccessNotification('Alumno editado con éxito'));
     }
-    return this.hitBethelApi(RequestType.POST, { student: student }, '/students');
+    return this.hitBethelApi(RequestType.POST, { student: student }, '/students')
+      .map(() => this.notificationService.handleSuccessNotification('Alumno agregado con éxito'));
   }
 
   deleteStudent(student: StudentResponse) {
-    return this.hitBethelApi(RequestType.DELETE, {}, '/students/' + student.id);
+    return this.hitBethelApi(RequestType.DELETE, {}, '/students/' + student.id)
+      .map(() => this.notificationService.handleSuccessNotification('Alumno eliminado con éxito'));
   }
 }

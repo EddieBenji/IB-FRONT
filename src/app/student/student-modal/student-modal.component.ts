@@ -10,14 +10,10 @@ import { StudentService } from '../student.service';
   animations: [ slideModal() ]
 })
 export class StudentModalComponent implements OnInit, OnDestroy {
-  @Input()
-  public display = 'none';
-  @Input()
-  public student: StudentResponse;
-  @Input()
-  public isEditing = false;
-  @Output()
-  onCloseModal = new EventEmitter();
+  @Input() public display = 'none';
+  @Input() public student: StudentResponse;
+  @Input() public isEditing = false;
+  @Output() onCloseModal = new EventEmitter();
 
   constructor(private studentService: StudentService) {
   }
