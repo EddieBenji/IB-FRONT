@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { StudentResponse } from './student-response.model';
+import { PaginationService } from '../../utils/pagination-footer/pagination.service';
 
 @Component({
   selector: 'app-student-table',
@@ -11,7 +12,7 @@ export class StudentTableComponent implements OnInit {
   @Output() public onStudentSelect = new EventEmitter<{ student: StudentResponse, permitToEdit: boolean }>();
   @Output() public onStudentDelete = new EventEmitter<StudentResponse>();
 
-  constructor() {
+  constructor(public paginationService: PaginationService) {
   }
 
   ngOnInit() {
