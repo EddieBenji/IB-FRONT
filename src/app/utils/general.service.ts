@@ -44,7 +44,7 @@ export class GeneralService {
   };
 
   constructor(protected http: HttpClient, protected notificationService: NotificationService) {
-    this.bethelUrl = isDevMode() ? 'http://localhost:3000' : 'http://localhost:3000';
+    this.bethelUrl = isDevMode() ? 'http://localhost:3000' : 'https://young-harbor-94746.herokuapp.com';
   }
 
   protected handleError = function (error: Response | any) {
