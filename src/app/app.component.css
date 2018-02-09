@@ -7,7 +7,7 @@
 }
 
 .nav-styles {
-  background-color: #39D1F3;
+  background-color: #39d1f3;
 }
 
 .nav-item {
@@ -15,11 +15,11 @@
 }
 
 .nav-styles a {
-  color: #E8F70C;
+  color: #e8f70c;
 }
 
 .nav-styles a:hover {
-  color: #67c9a4
+  color: #67c9a4;
 }
 
 .nav-styles a.active {
@@ -32,5 +32,9 @@
 }
 
 .dropdown-links a:hover {
-  color: #252830
+  color: #252830;
+}
+
+.dropdown-menu.show {
+  position: absolute;
 }

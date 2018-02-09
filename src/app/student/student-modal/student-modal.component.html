@@ -13,7 +13,7 @@
 
         </ng-template>
         <!--close button:-->
-        <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+        <button type="button" class="close" aria-label="Close" (click)="closeModal(false)">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -70,7 +70,7 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary click-here"
-                  (click)="closeModal()">
+                  (click)="closeModal(false)">
             Cerrar
           </button>
           <button *ngIf="isStudentNew(); else updateBtn"

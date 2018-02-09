@@ -8,7 +8,7 @@ import { ResponseConfirmationModalModel } from '../utils/confirmation-modal/resp
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
-  styleUrls: [ './student.component.css' ]
+  styleUrls: ['./student.component.css']
 })
 export class StudentComponent implements OnInit {
   public searcher: SearchStudent;
@@ -22,21 +22,22 @@ export class StudentComponent implements OnInit {
 
   SECTION_ID = 'students';
 
-  constructor(private studentService: StudentService,
-              private bethelEmitter: BethelEmitter) {
-  }
+  constructor(
+    private studentService: StudentService,
+    private bethelEmitter: BethelEmitter
+  ) {}
 
   ngOnInit() {
-    this.searcher = new SearchStudent;
+    this.searcher = new SearchStudent();
     this.fetchStudents();
     this.bethelEmitter.closeConfirmationModal.subscribe(
       (answer: ResponseConfirmationModalModel) => {
         if (answer.opId !== this.SECTION_ID || !answer.response) {
           return;
         }
-        this.studentService.deleteStudent(this.studentSelected).subscribe(
-          (response) => this.fetchStudents()
-        );
+        this.studentService
+          .deleteStudent(this.studentSelected)
+          .subscribe(response => this.fetchStudents());
       }
     );
   }
@@ -44,38 +45,46 @@ export class StudentComponent implements OnInit {
   private fetchStudents() {
     this.isLoading = true;
     this.students = [];
-    this.studentService.searchForStudents(this.searcher).subscribe(
-      (response: StudentResponse[]) => {
+    this.studentService
+      .searchForStudents(this.searcher)
+      .subscribe((response: StudentResponse[]) => {
         this.students = response;
         this.isLoading = false;
         this.displayModal = 'none';
         this.studentSelected = null;
-      }
-    );
+      });
   }
 
   searchForStudents() {
     this.fetchStudents();
   }
 
-  selectStudent(infoStudent: { student: StudentResponse, permitToEdit: boolean }) {
-    this.studentSelected = infoStudent.student ? infoStudent.student : new StudentResponse;
+  selectStudent(infoStudent: {
+    student: StudentResponse;
+    permitToEdit: boolean;
+  }) {
+    this.studentSelected = infoStudent.student
+      ? infoStudent.student
+      : new StudentResponse();
     this.isEditing = infoStudent.permitToEdit;
     this.displayModal = 'block';
   }
 
-  onCloseStudentModal() {
+  onCloseStudentModal(reload: boolean) {
     this.studentSelected = null;
     this.isEditing = false;
     this.displayModal = 'none';
-    this.fetchStudents();
+    if (reload) {
+      this.fetchStudents();
+    }
   }
 
   deleteStudent(student: StudentResponse) {
     this.bethelEmitter.handleConfirmationModal(
-      'Eliminar estudiante', '¿Seguro que deseas eliminar el estudiante seleccionado?', this.SECTION_ID
+      'Eliminar estudiante',
+      '¿Seguro que deseas eliminar el estudiante seleccionado?',
+      this.SECTION_ID
     );
     this.studentSelected = student;
   }
-
 }
