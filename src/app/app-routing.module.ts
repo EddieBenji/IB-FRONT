@@ -1,11 +1,20 @@
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
-import { StudentComponent } from './student/student.component';
+import { NgModule } from '@angular/core';
 
 const APP_ROUTES: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent },
-  { path: 'students', component: StudentComponent }
+  { path: 'students', loadChildren: './student/student.module#StudentModule' }
 ];
 
-export const BethelInstituteRouting = RouterModule.forRoot(APP_ROUTES);
+@NgModule({
+  imports: [
+    RouterModule.forRoot(APP_ROUTES, { preloadingStrategy: PreloadAllModules })
+  ],
+  exports: [ RouterModule ]
+})
+
+export class AppRoutingModule {
+
+}
