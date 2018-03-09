@@ -7,13 +7,13 @@ import { StudentModalComponent } from './student-modal/student-modal.component';
 import { StudentComponent } from './student.component';
 import { StudentTableComponent } from './student-table/student-table.component';
 import { StudentService } from './student.service';
-import { FormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     StudentRoutingModule,
-    FormsModule,
+    SharedModule
   ],
   declarations: [
     StudentComponent,
