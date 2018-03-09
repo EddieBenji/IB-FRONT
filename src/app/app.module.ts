@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
 import { ConfirmationModalComponent } from './utils/confirmation-modal/confirmation-modal.component';
@@ -17,6 +18,9 @@ import { GeneralService } from './utils/general.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+import { AuthService } from './auth/auth.service';
+import { reducers } from './app.reducer';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -33,14 +37,18 @@ import { SharedModule } from './shared/shared.module';
     NgbModule.forRoot(),
     HttpClientModule,
     CoreModule,
-    SharedModule
+    SharedModule,
+    AuthModule,
+    // NGRX:
+    StoreModule.forRoot(reducers)
   ],
   providers: [
     GeneralService,
     BethelEmitter,
     PaginationService,
     SimpleDropDownEmitter,
-    NotificationService
+    NotificationService,
+    AuthService
   ],
   bootstrap: [ AppComponent ]
 })

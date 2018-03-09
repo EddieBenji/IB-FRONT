@@ -1,0 +1,4 @@
+<h1 *ngIf="isLoading$|async">Fetching data!</h1>
+<h2 *ngIf="!(isLoading$|async)">Data has been fetched!</h2>
+
+<button class="btn btn-primary" (click)="onLoginSubmit()">Login!</button>
