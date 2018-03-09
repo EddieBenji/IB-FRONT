@@ -3,11 +3,10 @@
  */
 
 import { Injectable, isDevMode } from '@angular/core';
-import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { RequestType } from './request-type.enum';
 import { NotificationService } from './notification/notification.service';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 
 @Injectable()
 export class GeneralService {
@@ -47,15 +46,13 @@ export class GeneralService {
     this.bethelUrl = isDevMode() ? 'http://localhost:3000' : 'https://young-harbor-94746.herokuapp.com';
   }
 
-  protected handleError = function (error: Response | any) {
-    const errMsg = (error.message) ? error.message :
-      error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+  protected handleError = function (errorObj: HttpErrorResponse) {
+    // This fix is because angular 5 manages the error as HttpErrorResponse object.
+    const error = errorObj.error ? errorObj.error : errorObj;
+    const errMsg = error.message ? error.message :
+      (errorObj.status && errorObj.statusText) ? `${errorObj.status} - ${errorObj.statusText}` : 'Server error';
     this.notificationService.handleErrorNotification(errMsg);
     return Observable.throw(errMsg);
-  };
-
-  protected extractData = function (response: Response) {
-    return response || {};
   };
 
   private appendTokenToUrl(endpointUrl: string, token: string) {
@@ -77,7 +74,6 @@ export class GeneralService {
         this.bethelUrl + endpointUrl, JSON.stringify(objectToSend),
         { headers: new HttpHeaders().set('Content-Type', 'application/json') }
       )
-        .map((response: Response) => this.extractData(response))
         .catch((error: any) => this.handleError(error));
     }
 
@@ -90,7 +86,6 @@ export class GeneralService {
         }
       }
       return this.http.get(this.bethelUrl + endpointUrl, { params: queryParams })
-        .map((response: Response) => this.extractData(response))
         .catch((error: any) => this.handleError(error));
     }
 
@@ -98,14 +93,12 @@ export class GeneralService {
       return this.http.put(
         this.bethelUrl + endpointUrl, JSON.stringify(objectToSend),
         { headers: new HttpHeaders().set('Content-Type', 'application/json') })
-        .map((response: Response) => this.extractData(response))
         .catch((error: any) => this.handleError(error));
     }
 
     // Then delete method:
     return this.http.delete(this.bethelUrl + endpointUrl,
       { headers: new HttpHeaders().set('Content-Type', 'application/json') })
-      .map((response: Response) => this.extractData(response))
       .catch((error: any) => this.handleError(error));
   }
 
