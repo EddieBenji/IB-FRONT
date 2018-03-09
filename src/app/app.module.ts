@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { BethelInstituteRouting } from './app-routing.module';
@@ -23,6 +23,8 @@ import { StudentModalComponent } from './student/student-modal/student-modal.com
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StudentSearcherComponent } from './student/student-searcher/student-searcher.component';
 import { StudentTableComponent } from './student/student-table/student-table.component';
+import { HttpResponseInterceptor } from './utils/interceptors/http-error.interceptor';
+import { HttpRequestInterceptor } from './utils/interceptors/http-request.interceptor';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import { StudentTableComponent } from './student/student-table/student-table.com
     SimpleDropDownEmitter,
     StudentService,
     NotificationService,
+    { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: HttpResponseInterceptor, multi: true }
   ],
   bootstrap: [ AppComponent ]
 })
