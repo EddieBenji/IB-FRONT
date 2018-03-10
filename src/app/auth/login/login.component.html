@@ -1,4 +1,43 @@
-<h1 *ngIf="isLoading$|async">Fetching data!</h1>
-<h2 *ngIf="!(isLoading$|async)">Data has been fetched!</h2>
+<form [formGroup]="loginForm" (submit)="onLoginSubmit()" novalidate>
 
-<button class="btn btn-primary" (click)="onLoginSubmit()">Login!</button>
+  <div class="form-group">
+    <label for="login-email">Correo electrónico</label>
+    <input type="email"
+           class="form-control"
+           [ngClass]="{'is-invalid': loginForm.controls.email.touched && loginForm.controls.email.invalid}"
+           id="login-email"
+           formControlName="email"
+           aria-describedby="login-email-help"
+           placeholder="Escriba su correo">
+    <small *ngIf="!loginForm.controls.email.touched || !loginForm.controls.email.invalid; else errorMsg"
+           id="login-email-help"
+           class="form-text text-muted">Usa el correo con el que te dieron de alta en el
+      sistema.
+    </small>
+    <ng-template #errorMsg>
+      <div class="invalid-feedback">
+        Por favor, escriba su correo.
+      </div>
+    </ng-template>
+
+  </div>
+
+  <div class="form-group">
+    <label for="login-password">Contraseña</label>
+    <input type="password"
+           class="form-control"
+           [ngClass]="{'is-invalid': loginForm.controls.password.touched && loginForm.controls.password.invalid}"
+           id="login-password"
+           formControlName="password"
+           placeholder="Escriba su contraseña">
+    <div class="invalid-feedback" *ngIf="loginForm.controls.password.touched && loginForm.controls.password.invalid">
+      Por favor, escriba su contraseña.
+    </div>
+  </div>
+
+  <button type="submit"
+          [disabled]="loginForm.invalid"
+          class="btn btn-primary">Submit
+  </button>
+
+</form>

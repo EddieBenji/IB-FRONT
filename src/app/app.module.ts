@@ -21,6 +21,8 @@ import { SharedModule } from './shared/shared.module';
 import { AuthService } from './auth/auth.service';
 import { reducers } from './app.reducer';
 import { AuthModule } from './auth/auth.module';
+import { environment } from '../environments/environment';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { AuthModule } from './auth/auth.module';
     SharedModule,
     AuthModule,
     // NGRX:
-    StoreModule.forRoot(reducers)
+    StoreModule.forRoot(reducers),
+    !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [
     GeneralService,

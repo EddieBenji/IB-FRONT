@@ -18,15 +18,17 @@ export class AuthService extends GeneralService {
 
   login(authData: { email: string, password: string }) {
     console.log(authData);
+    /*for now, this works in a dummy way!*/
     this.store.dispatch(new StartLoading());
     setTimeout(() => {
       this.store.dispatch(new StopLoading());
     }, 3000);
-    // this.hitBethelApi(RequestType.POST, authData, '/login').subscribe(
-    //   (authInfo) => {
-    //     // Something to do!
-    //   }
-    // );
+    /*for now, this works in a dummy way!*/
+    this.hitBethelApi(RequestType.POST, authData, '/login').subscribe(
+      (authInfo) => {
+        // Something to do!
+      }
+    );
   }
 
 }
