@@ -1,10 +1,16 @@
 <nav class="navbar navbar-fixed-top navbar-light bg-faded nav-styles">
   <div class="container">
     <ul class="nav navbar-nav show-inline">
-      <li class="nav-item show-inline">
+      <li class="nav-item show-inline" *ngIf="!(isAuthenticated$|async)">
+        <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active">Iniciar sesión</a>
+      </li>
+      <li class="nav-item show-inline click-here" *ngIf="isAuthenticated$|async">
+        <a class="nav-link" (click)="onLogout()">Cerrar sesión</a>
+      </li>
+      <li class="nav-item show-inline" *ngIf="isAuthenticated$|async">
         <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">Inicio</a>
       </li>
-      <li class="nav-item show-inline">
+      <li class="nav-item show-inline" *ngIf="isAuthenticated$|async">
         <a class="nav-link" [routerLink]="['/students']" routerLinkActive="active">Estudiantes</a>
       </li>
     </ul>

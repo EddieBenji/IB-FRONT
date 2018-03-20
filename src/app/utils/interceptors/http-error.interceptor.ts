@@ -13,11 +13,17 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/do';
 
 import { NotificationService } from '../notification/notification.service';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../app.reducer';
+import { SetUnauthenticated } from '../../auth/auth.actions';
 
 @Injectable()
 export class HttpResponseInterceptor implements HttpInterceptor {
 
-  constructor(private notificationService: NotificationService) {
+  constructor(private notificationService: NotificationService,
+              private router: Router,
+              private store: Store<AppState>) {
   }
 
   protected handleError = function (errorObj: HttpErrorResponse) {
@@ -31,12 +37,22 @@ export class HttpResponseInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).do(
       event => {
-        if (event instanceof HttpResponse && event.body && event.body.message) {
+        if ((!(event instanceof HttpResponse)) || event.status === 202) {
+          // status = 202 means the front end has just hit the '/test' endpoint
+          return;
+        }
+        if (event.body && event.body.message) {
           this.notificationService.handleSuccessNotification(event.body.message)
         }
       }
     ).catch((err: HttpErrorResponse) => {
-      this.handleError(err);
+      if (err.status === 401 && err.statusText === 'Unauthorized') {
+        this.notificationService.handleInfoNotification('Tu sesión ha expirado.');
+        this.store.dispatch(new SetUnauthenticated());
+        this.router.navigate([ '/login' ]);
+      } else {
+        this.handleError(err);
+      }
       // ...optionally return a default fallback value so app can continue (pick one)
       // which could be a default value (which has to be a HttpResponse here)
       // return Observable.of(new HttpResponse({body: [{name: "Default value..."}]}));

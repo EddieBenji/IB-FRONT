@@ -7,6 +7,8 @@ import { Observable } from 'rxjs/Rx';
 import { RequestType } from './request-type.enum';
 import { NotificationService } from './notification/notification.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { Store } from '@ngrx/store';
+import { AppState } from '../app.reducer';
 
 @Injectable()
 export class GeneralService {
@@ -28,7 +30,8 @@ export class GeneralService {
     return possibleWord;
   }
 
-  constructor(protected http: HttpClient, protected notificationService: NotificationService) {
+  constructor(protected http: HttpClient, protected notificationService: NotificationService,
+              protected  store: Store<AppState>) {
     this.bethelUrl = isDevMode() ? 'http://localhost:3000' : 'https://young-harbor-94746.herokuapp.com';
   }
 

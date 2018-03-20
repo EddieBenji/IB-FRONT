@@ -38,9 +38,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     BrowserAnimationsModule,
     NgbModule.forRoot(),
     HttpClientModule,
-    CoreModule,
-    SharedModule,
     AuthModule,
+    SharedModule,
+    CoreModule,
     // NGRX:
     StoreModule.forRoot(reducers),
     !environment.production ? StoreDevtoolsModule.instrument() : []

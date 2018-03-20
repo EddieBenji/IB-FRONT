@@ -2,21 +2,25 @@ import { AuthActions, SET_AUTHENTICATED, SET_UNAUTHENTICATED } from './auth.acti
 
 export interface AuthState {
   isAuthenticated: boolean;
+  token: string;
 }
 
 const initialState: AuthState = {
-  isAuthenticated: false
+  isAuthenticated: false,
+  token: null
 };
 
 export function authReducer(state = initialState, action: AuthActions) {
   switch (action.type) {
     case SET_AUTHENTICATED:
       return {
-        isAuthenticated: true
+        isAuthenticated: true,
+        token: action.payload
       };
     case SET_UNAUTHENTICATED:
       return {
-        isAuthenticated: false
+        isAuthenticated: false,
+        token: null
       };
     default:
       return state;
@@ -24,3 +28,4 @@ export function authReducer(state = initialState, action: AuthActions) {
 }
 
 export const isAuthenticated = (state: AuthState) => state.isAuthenticated;
+export const token = (state: AuthState) => state.token;
